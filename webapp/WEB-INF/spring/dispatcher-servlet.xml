@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<!-- donde se encuentra los controladores -->
+	<context:component-scan
+		base-package="cine.app.controller" />
+
+	<!-- Habilitar el soporte de anotaciones que son específicas de Spring MVC 
+		( @Controller, @RequestMapping, @RequestBody, @ResponseBody, etc ). -->
+	<mvc:annotation-driven />
+	<!-- end -->
+
+	<!-- Definir un ViewResolver (indicarle a Spring MVC donde buscará las vistas 
+		[JSP] ) -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+		<!-- Directorio donde estaran las vistas -->
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+
+		<!-- Tipo de vista -->
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<!-- end -->
+	<!-- Crear carpeta "resources" donde se almacenarán los recursos estáticos. -->
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
+	<!-- Upload files paso 2 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+</beans>

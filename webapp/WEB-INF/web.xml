@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<!-- -En Spring MVC es un tipo de Context basado en Servlets que es creado 
+		en base a la configuración del Dispatcher Servlet (pueden ser varios) ubicada 
+		en el archivo web.xml de la aplicación web. -Cada Dispatcher Servlet tiene 
+		su propio Context y es inicializado apartir del archivo <servlet-name>-servlet.xml 
+		= springmvc-servlet.xml -->
+	<!-- configuracion del dispatcher servlet -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+		<!-- Upload files paso 1 -->
+		<multipart-config>
+			<location>c:\temp</location>
+		</multipart-config>
+		
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<!-- <url-pattern>*.html</url-pattern> -->
+		<!-- respondera a todas las peticiones sin ponerle ka extension al final 
+			del archivo -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!--end configuracion del dispatcher servlet -->
+
+	<!--start root aplication context -->
+	<!-- root aplication context, solo pude a ver uno por proyecto, tiene componentes 
+		que pueden ser usados para toda la aplicación: Componentes de Servicio-Service, 
+		Componentes de Datos-Repository, DAOs -->
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!--end root aplication context -->
+
+	<!-- Esa es la razón por la cual aparece el ID de la Sesión en la URL (jsessionid). 
+		En este caso para que no se agregue este parámetro en la URL, hay que cambiar 
+		la configuración del session tracking mode para que el ID de la Sesión se 
+		guarde en COOKIES. -->
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+
+
+
+
+</web-app>
