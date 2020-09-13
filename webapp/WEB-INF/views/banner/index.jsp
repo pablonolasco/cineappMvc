@@ -28,7 +28,12 @@
     <div class="container theme-showcase" role="main">
 
       <h3>Listado de imagenes del Banner</h3>
-     <jtsl:if test="${ }"></jtsl:if>
+     <jtsl:if test="${ gmsg !=null }">
+     	<div class="alert alert-success" role="alert">${ msg }</div>
+     </jtsl:if>
+     <jtsl:if test="${ msgError }">
+     	<div class="alert alert-danger" role="alert">${ msgError }</div>
+     </jtsl:if>
       <spring:url value="/banners/create-banner" var="urlFrm"></spring:url>
       <a href="${ urlFrm }" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
@@ -50,7 +55,7 @@
                  <td>${ banner.fecha }</td>    
                 <td>${ banner.archivo }</td>  
                 <td><jtsl:choose>
-                	<jtsl:when test="${ banner.estatus eq 'activo'}">
+                	<jtsl:when test="${ banner.estatus eq 'Activo'}">
                 		<span class="label label-success">Activa</span>
                 	</jtsl:when>
                 	<jtsl:otherwise>

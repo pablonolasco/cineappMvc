@@ -48,7 +48,7 @@ public class BannerController {
 			if (result.hasErrors()) {
 				return "banner/create";
 			}
-			
+			System.out.println(this.bannerService.buscarTodas());
 			// ==valida si se trae un archivo
 			if(!multipartFile.isEmpty()) {
 				try {
@@ -56,8 +56,9 @@ public class BannerController {
 					banner.setArchivo(nombreImagen);;
 				} catch (Exception e) {
 					// TODO: handle exception
+					System.err.println("Error obtener imagen:"+e.getMessage());
 					attributes.addFlashAttribute("msgError","El banner no se ha registrado, ocurrio un error al subir la imagen");
-					return "redirect:banners/index";
+					return "redirect:/banners/index";
 				}
 				
 			}
@@ -65,8 +66,10 @@ public class BannerController {
 			this.bannerService.insertarBanner(banner);
 			//==flag
 			attributes.addFlashAttribute("msg", "La imagen del banner se ha guardado correctamente");
+			System.out.println(banner);
 		} catch (Exception e) {
 			// TODO: handle exception
+			System.err.println("Error metodo guardar imagen banner:"+e.getMessage());
 			attributes.addFlashAttribute("msgError","Error:"+e.getMessage());
 		}
 		return "redirect:/banners/index";

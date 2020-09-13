@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="jtsl" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="spring" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 
          <h3 class="blog-title"><span class="label label-success">Datos de la imagen</span></h3>
 		 <spring:url value="/banners/save-banner" var="urlFrm"></spring:url>
-         <form action="${ urlFrm }" method="post"  enctype=""multipart/form-data"">
+         <form action="${ urlFrm }" method="post"  enctype="multipart/form-data">
             <div class="row">         
                <div class="col-sm-6">
                   <div class="form-group">

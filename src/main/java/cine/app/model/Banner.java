@@ -15,7 +15,7 @@ public class Banner {
 	private String estatus;
 	
 	public Banner() {
-		this.estatus="activo";
+		this.estatus="Activo";
 		this.fecha= new Date();
 	}
 	

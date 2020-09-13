@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cine.app.model.Banner;
 import cine.app.model.Pelicula;
+import cine.app.service.IBannerService;
 import cine.app.service.IPeliculasService;
 import cine.app.util.Util;
 
@@ -29,6 +31,8 @@ import cine.app.util.Util;
 public class HomeController {
 	@Autowired
 	private IPeliculasService peliculasService;
+	@Autowired
+	private IBannerService bannerService;
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
 
 	/*
@@ -49,8 +53,10 @@ public class HomeController {
 	public String mostrarPrincipal(Model model) {
 		List<Pelicula> peliculas = peliculasService.buscarTodas();
 		List<String>fechas=Util.getNextDay(5);
+		List<Banner>banners=bannerService.buscarTodas();
 		model.addAttribute("fechaBusqueda", dateFormat.format(new Date()));
 		model.addAttribute("peliculas", peliculas);
+		model.addAttribute("banners",banners);
 		model.addAttribute("fechas",fechas);
 		return "home";
 	}
