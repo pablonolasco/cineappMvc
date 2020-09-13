@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+# JDT-specific (Eclipse Java Development Tools)     
+.classpath
+
+*/target/**
+
 # Log file
 *.log
 
