@@ -52,6 +52,7 @@
 				<div class="col-sm-3">
 					<div class="form-group">
 						<label for="titulo">Título</label> 
+						<form:hidden path="pId"/>
 						<form:input type="text"
 							class="form-control" path="pTitulo" id="titulo"
 							required="required" />
@@ -70,9 +71,9 @@
 						<label for="clasificacion" class="control-label">Clasificacion</label>
 						<form:select id="clasificacion" path="pClasificacion"
 							class="form-control">
-							<form:option value="A">Clasificacion A</form:option>
-							<form:option value="B">Clasificacion B</form:option>
-							<form:option value="C">Clasificacion C</form:option>
+							<jtsl:forEach items="${ clasificaciones }" var="clasificacion">
+								<form:option value="${clasificacion} }">Clasificacion ${ clasificacion }</form:option>
+							</jtsl:forEach>
 						</form:select>
 					</div>
 				</div>
@@ -80,16 +81,8 @@
 					<div class="form-group">
 						<label for="genero" class="control-label">Genero</label> 
 						<form:select
-							id="genero" path="pGenero" class="form-control">
-							<form:option value="Accion">Accion</form:option>
-							<form:option value="Aventura">Aventura</form:option>
-							<form:option value="Clasicas">Clasicas</form:option>
-							<form:option value="Comedia Romantica">Comedia Romantica</form:option>
-							<form:option value="Drama">Drama</form:option>
-							<form:option value="Terror">Terror</form:option>
-							<form:option value="Infantil">Infantil</form:option>
-							<form:option value="Accion y Aventura">Accion y Aventura</form:option>
-							<form:option value="Romantica">Romantica</form:option>
+							id="genero" path="pGenero" class="form-control" items="${ generos }">
+						
 						</form:select>
 					</div>
 				</div>
@@ -118,6 +111,7 @@
 				<div class="col-sm-3">
 					<div class="form-group">
 						<label for="imagen">Imagen</label> 
+						<form:hidden path="pImage"/>
 						<input type="file"
 							id="archivoImagen" name="archivoImagen" />
 						<p class="help-block">Imagen de la pelicula</p>

@@ -37,7 +37,9 @@ public class PeliculaController {
 	@GetMapping("/create-pelicula")
 	
 	//== Form Tag Library 
-	public String create(@ModelAttribute Pelicula pelicula) {
+	public String create(@ModelAttribute Pelicula pelicula, Model model) {
+		model.addAttribute("generos", peliculaService.buscarGeneros());
+		model.addAttribute("clasificaciones", peliculaService.buscarClasificacion());
 		return "peliculas/create";
 	}
 

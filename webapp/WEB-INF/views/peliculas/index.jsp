@@ -54,6 +54,7 @@
 				</tr>
 				<jtsl:forEach items="${ peliculas }" var="pelicula">
 					<tr>
+						
 						<td>${ pelicula.pTitulo }</td>
 						<td>${ pelicula.pGenero }</td>
 						<td>${ pelicula.pClasificacion }</td>
