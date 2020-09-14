@@ -2,7 +2,7 @@
 *.class
 
 # JDT-specific (Eclipse Java Development Tools)     
-.classpath
+*.classpath
 
 */target/**
 
