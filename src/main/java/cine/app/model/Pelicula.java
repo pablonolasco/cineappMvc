@@ -19,6 +19,7 @@ public class Pelicula implements Serializable{
 	private String pImage="cinema.png";//===imagen por defecto
 	private Date pFechaEstreno;
 	private String pStatus="Activa";
+	private Detalle detalle;
 	
 	public Pelicula() {
 		super();
@@ -80,12 +81,21 @@ public class Pelicula implements Serializable{
 	public void setpStatus(String pStatus) {
 		this.pStatus = pStatus;
 	}
+	
+	public Detalle getDetalle() {
+		return detalle;
+	}
+	public void setDetalle(Detalle detalle) {
+		this.detalle = detalle;
+	}
 	@Override
 	public String toString() {
 		return "Pelicula [pId=" + pId + ", pTitulo=" + pTitulo + ", pDuracion=" + pDuracion + ", pClasificacion="
 				+ pClasificacion + ", pGenero=" + pGenero + ", pImage=" + pImage + ", pFechaEstreno=" + pFechaEstreno
-				+ ", pStatus=" + pStatus + "]";
+				+ ", pStatus=" + pStatus + ", detalle=" + detalle + "]";
 	}
+	
+
 
 	
 }
