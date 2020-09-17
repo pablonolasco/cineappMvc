@@ -114,7 +114,7 @@
 						<form:hidden path="pImage"/>
 						<input type="file"
 							id="archivoImagen" name="archivoImagen" />
-						<p class="help-block">Imagen de la pelicula</p>
+						<image src="${ urlPublic }/images/${pelicula.pImage}" class="help-block img-rounded">Imagen de la pelicula</p>
 					</div>
 				</div>
 			</div>
