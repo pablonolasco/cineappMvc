@@ -28,7 +28,7 @@
     <div class="container theme-showcase" role="main">
 
       <h3>Listado de imagenes del Banner</h3>
-     <jtsl:if test="${ gmsg !=null }">
+     <jtsl:if test="${ msg !=null }">
      	<div class="alert alert-success" role="alert">${ msg }</div>
      </jtsl:if>
      <jtsl:if test="${ msgError }">
