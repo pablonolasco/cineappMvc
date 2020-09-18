@@ -2,15 +2,16 @@ package cine.app.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
 public class Contacto implements Serializable{
 
 	private int id;
 	private String nombre;
 	private String email;
-	private int raiting;
+	private int rating;
 	private String [] generos;
-	private String [] notificaciones;
+	private List<String>notificaciones;
 	private String comentarios;
 	
 	public Contacto() {
@@ -41,12 +42,12 @@ public class Contacto implements Serializable{
 		this.email = email;
 	}
 
-	public int getRaiting() {
-		return raiting;
+	public int getRating() {
+		return rating;
 	}
 
-	public void setRaiting(int raiting) {
-		this.raiting = raiting;
+	public void setRating(int raiting) {
+		this.rating = raiting;
 	}
 
 	public String[] getGeneros() {
@@ -57,11 +58,11 @@ public class Contacto implements Serializable{
 		this.generos = generos;
 	}
 
-	public String[] getNotificaciones() {
+	public List<String> getNotificaciones() {
 		return notificaciones;
 	}
 
-	public void setNotificaciones(String[] notificaciones) {
+	public void setNotificaciones(List<String> notificaciones) {
 		this.notificaciones = notificaciones;
 	}
 
@@ -75,11 +76,12 @@ public class Contacto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Contacto [id=" + id + ", nombre=" + nombre + ", email=" + email + ", raiting=" + raiting + ", generos="
-				+ Arrays.toString(generos) + ", notificaciones=" + Arrays.toString(notificaciones) + ", comentarios="
-				+ comentarios + "]";
+		return "Contacto [id=" + id + ", nombre=" + nombre + ", email=" + email + ", raiting=" + rating + ", generos="
+				+ Arrays.toString(generos) + ", notificaciones=" + notificaciones + ", comentarios=" + comentarios
+				+ "]";
 	}
-	
+
+
 	
 	
 	

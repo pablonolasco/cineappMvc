@@ -1,5 +1,8 @@
 package cine.app.controller;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jdt.internal.compiler.env.IModule.IService;
@@ -32,6 +35,7 @@ public class ContactoController {
 		try {
 			
 			modelo.addAttribute("generos", peliculaService.buscarGeneros());
+			modelo.addAttribute("notificacion", this.tipo());
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -52,6 +56,15 @@ public class ContactoController {
 			// TODO: handle exception
 		}
 		return "redirect:/contacto/create";
+	}
+
+	private List<String>tipo(){
+		List<String>listTipo= new LinkedList<String>();
+		listTipo.add("Estrenos");
+		listTipo.add("Promociones");
+		listTipo.add("Noticias");
+		listTipo.add("Preventas");
+		return listTipo;
 	}
 	
 }
