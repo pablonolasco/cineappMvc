@@ -27,6 +27,9 @@
     <div class="container theme-showcase" role="main">
 
       <h3>Listado de Horarios</h3>
+      <jtsl:if test="${msgError != null}">
+      	<div class="alert alert-danger" role="alert">${ msgError }</div>
+      </jtsl:if>
       <spring:url value="/horarios/create-horario" var="urlFrm"></spring:url>
       <a href="${ urlFrm }" class="btn btn-success" role="button" title="Nueva Horario" >Nuevo</a><br><br>
 	

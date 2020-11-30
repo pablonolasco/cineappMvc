@@ -47,9 +47,10 @@
 				<div class="col-sm-3">
 					<div class="form-group">
 						<label for="idPelicula" class="control-label">Pelicula</label>
-						<form:select id="idPelicula" path="pelicula" class="form-control"
+						<form:select id="idPelicula" path="pelicula.pId" class="form-control"
 							items="${ peliculas }" itemValue="pId" itemLabel="pTitulo">
 						</form:select>
+						
 					</div>
 				</div>
 			</div>

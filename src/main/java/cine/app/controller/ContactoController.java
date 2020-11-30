@@ -44,7 +44,8 @@ public class ContactoController {
 	}
 	
 	@PostMapping("send-comment")
-	public String store(@ModelAttribute("instanciaContacto") Contacto contacto,BindingResult result, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+	public String store(@ModelAttribute("instanciaContacto") Contacto contacto,BindingResult result, 
+			RedirectAttributes redirectAttributes, HttpServletRequest request) {
 		try {		
 			if (result.hasErrors()) {
 				return "contacto/create";
