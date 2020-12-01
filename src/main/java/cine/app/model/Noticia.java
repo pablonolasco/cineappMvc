@@ -2,11 +2,36 @@ package cine.app.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+//==liberia para persistir la clase
+@Entity
+//==nombre de la tabla donde se almacenara la entidad
+@Table(name="noticias")
 public class Noticia {
+	
+	/*
+	 * es necesario que JPA identifique que 
+	 * columna mapea contra cada atributo de la clase y es aquí donde entra @Column.
+	 * Solo se usa cuando el nombre del campo es diferente al de la clase en la base de datos 
+	 */
+	
+	//==indica campo como llave primaria
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//==dependiendo del gestor se indica la variable para referenciar que es autoincrement
 	private int nId;
+	
+	//@Column(name = "titulo", nullable = true)
 	private String nTitulo;
+	//@Column(name = "fecha", nullable = true)
 	private Date nFecha;
+	//@Column(name = "detalle", nullable = true)
 	private String nDetalle;
+	//@Column(name = "estatus", nullable = true)
 	private String nEstatus;
 
 	public Noticia() {

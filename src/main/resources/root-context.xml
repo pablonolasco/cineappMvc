@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   		http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-4.3.xsd
+			http://www.springframework.org/schema/data/jpa 
+			http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	<!-- Activar el autoescanéo para detectar e instanciar beans para inyectar 
+		(@Autowired) una clase de servicio en un controlador -->
+	<context:component-scan
+		base-package="cine.app.service" />
+	<!--1 Activar la libreia repository -->
+	<jpa:repositories base-package="cine.app.repository" />
+	<!--2 Activar la conexion a la bd DriverManagerDataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/ap_cine?useSSL=false" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	<!--3 Activar jpa de hibernate HibernateJpaVendorAdapter generateDdl, autogenera 
+		las tablas al compilar en la bd databasePlatform, driver de conexion -->
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="generateDdl" value="false" />
+		<property name="showSql" value="true"></property>
+		<property name="databasePlatform"
+			value="org.hibernate.dialect.MySQL5Dialect" />
+	</bean>
+	<!--4 LocalContainerEntityManagerFactoryBean genera el enlace con la persistencia 
+		por eso se coloca el paquete de los modelos -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan"
+			value="net.itinajero.app.model" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+	<!--5 Soporte para activar transacciones -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+</beans>
