@@ -23,15 +23,16 @@ public class Noticia {
 	//==indica campo como llave primaria
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//==dependiendo del gestor se indica la variable para referenciar que es autoincrement
+	@Column(name = "id", nullable = false)
 	private int nId;
 	
-	//@Column(name = "titulo", nullable = true)
+	@Column(name = "titulo", nullable = true)
 	private String nTitulo;
-	//@Column(name = "fecha", nullable = true)
+	@Column(name = "fecha", nullable = true)
 	private Date nFecha;
-	//@Column(name = "detalle", nullable = true)
+	@Column(name = "detalle", nullable = true)
 	private String nDetalle;
-	//@Column(name = "estatus", nullable = true)
+	@Column(name = "estatus", nullable = true)
 	private String nEstatus;
 
 	public Noticia() {
