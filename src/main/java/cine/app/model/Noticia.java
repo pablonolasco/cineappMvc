@@ -28,10 +28,13 @@ public class Noticia {
 	
 	@Column(name = "titulo", nullable = true)
 	private String nTitulo;
+	
 	@Column(name = "fecha", nullable = true)
 	private Date nFecha;
+	
 	@Column(name = "detalle", nullable = true)
 	private String nDetalle;
+	
 	@Column(name = "estatus", nullable = true)
 	private String nEstatus;
 

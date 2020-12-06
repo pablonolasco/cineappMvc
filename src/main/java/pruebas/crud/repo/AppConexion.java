@@ -1,4 +1,4 @@
-package pruebas.jpa;
+package pruebas.crud.repo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
