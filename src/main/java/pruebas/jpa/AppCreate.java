@@ -10,7 +10,6 @@ import cine.app.model.Noticia;
 import cine.app.repository.BannerRepository;
 import cine.app.repository.NoticiaRepository;
 
-
 /**
  * @author OPTIPLEX 9010
  *
@@ -30,12 +29,13 @@ public class AppCreate {
 			Banner banner = new Banner();
 			banner.setTitulo("baner");
 			banner.setArchivo("banner.jpg");
-			NoticiaRepository noticiaRepository=context.getBean("noticiaRepository", NoticiaRepository.class);
-			// teBannerRepository banerRepository = context.getBean("banerRepository", BannerRepository.class);
+			NoticiaRepository noticiaRepository = context.getBean("noticiaRepository", NoticiaRepository.class);
+			// BannerRepository banerRepository = context.getBean("banerRepository",
+			// BannerRepository.class);
 			// NoticiaRepository repository=context.getBean("noticiaRepository",
 			// NoticiaRepository.class);
 			noticiaRepository.save(noticia);
-			//banerRepository.save(banner);
+			// banerRepository.save(banner);
 			context.close();
 		} catch (Exception e) {
 			// TODO: handle exception

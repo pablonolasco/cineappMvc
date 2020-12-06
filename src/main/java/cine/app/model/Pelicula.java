@@ -6,19 +6,39 @@ package cine.app.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Windows10
  *
  */
+@Entity
+@Table(name = "peliculas")
 public class Pelicula implements Serializable{
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pId;
+	
 	private String pTitulo;
+	
 	private int pDuracion;
+	
 	private String pClasificacion;
+	
 	private String pGenero;
+	
 	private String pImage="cinema.png";//===imagen por defecto
+	
 	private Date pFechaEstreno;
+	
 	private String pStatus="Activa";
+	
 	private Detalle detalle;
 	
 	public Pelicula() {
