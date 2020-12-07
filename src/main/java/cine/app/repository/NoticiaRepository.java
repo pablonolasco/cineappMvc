@@ -1,5 +1,8 @@
 package cine.app.repository;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -24,4 +27,36 @@ public interface NoticiaRepository extends JpaRepository<Noticia, Integer> {
 	 * JpaRepository: Esta Interfaz extiende la interfaz PagingAndSortingRepository
 	 * y agrega funcionalidad específica para la tecnología JPA.
 	 */
+
+	/**
+	 * 
+	 * @param estatus
+	 * @return
+	 */
+	List<Noticia> findBy();
+
+	/*
+	 * @method select * from noticia where estatus=?
+	 */
+	List<Noticia> findBynEstatus(String estatus);
+
+	/**
+	 * @method select * from noticia where fecha=?
+	 */
+	List<Noticia> findBynFecha(Date fecha);
+
+	/*
+	 * where estatus=? and fecha=?
+	 */
+	List<Noticia> findBynEstatusAndnFecha(String nEstatus, Date nFecha);
+
+	/*
+	 * where estatus=? or fecha=?
+	 */
+	List<Noticia> findBynEstatusOrnFecha(String nEstatus, Date nFecha);
+
+	/*
+	 * where estatus=? between fecha=?
+	 */
+	List<Noticia> findBynFechaBetweennFecha(Date nEstatus, Date nFecha);
 }
